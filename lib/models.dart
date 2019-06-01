@@ -20,4 +20,11 @@ class Pet {
 
   Pet.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data, snapshot.reference);
+
+  @override
+  String toString() {
+    return 'Pet{reference: $reference, name: $name, avatarUrl: $avatarUrl}';
+  }
+
+
 }

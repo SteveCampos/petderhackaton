@@ -37,8 +37,8 @@ class MyHomePage extends StatelessWidget {
       builder: (context, asyncSnap) {
         if (!asyncSnap.hasData)
           return Center(child: CircularProgressIndicator());
-        return ListView(
-          padding: const EdgeInsets.only(top: 20.0),
+        return Column(
+          //padding: const EdgeInsets.only(top: 20.0),
           children:
               asyncSnap.data.map((p) => _buildPetItem(context, p)).toList(),
         );
@@ -47,10 +47,14 @@ class MyHomePage extends StatelessWidget {
   }
 
   Widget _buildPetItem(BuildContext context, Pet p) {
-    print('_buildPetItem');
+    print('_buildPetItem ${p.toString()}');
     return ListTile(
-      leading: avatar(p.avatarUrl),
-      title: new Text('${p.name}'),
+      leading: CircleAvatar(
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.white,
+        backgroundImage: new NetworkImage(p.avatarUrl),
+      ),
+      title: new Text(p.name),
       subtitle: new Text(p.reference.documentID),
     );
   }
